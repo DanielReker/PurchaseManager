@@ -1,4 +1,7 @@
 <RCC>
-    <qresource prefix="PurchaseManager">
+    <qresource prefix="/PurchaseManager"/>
+    <qresource prefix="/Translations">
+        <file>purchasemanager_en.qm</file>
+        <file>purchasemanager_ru.qm</file>
     </qresource>
 </RCC>

@@ -109,5 +109,8 @@
     <None Include="purchasemanager_en.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="purchasemanager_ru.ts">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

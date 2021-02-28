@@ -3,7 +3,7 @@
 
 PurchaseManager::PurchaseManager(QWidget* parent) : QMainWindow(parent), m_selectedShopIndex{ -1 }, m_pTranslator{ new QTranslator() } {
     //TODO: Make translations
-    m_pTranslator->load("C:/Users/Саша/source/repos/PurchaseManager/purchasemanager_en.qm");
+    m_pTranslator->load(":/Translations/purchasemanager_ru.qm");
     QApplication::installTranslator(m_pTranslator);
 
 
