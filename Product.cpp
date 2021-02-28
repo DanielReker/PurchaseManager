@@ -1,7 +1,7 @@
 #include "Product.h"
 
 Product::Product(Locality* pLocality, ProductType* pProductType)
-	: QObject(), m_pItem{ new QTableWidgetItem("Unknown") }, m_pProductType{ pProductType }, m_pLocality{ pLocality }, m_status{ Status::UNKNOWN } {
+	: QObject(), m_pItem{ new QTableWidgetItem(tr("unknown")) }, m_pProductType{ pProductType }, m_pLocality{ pLocality }, m_status{ Status::UNKNOWN } {
 
 }
 
@@ -36,19 +36,19 @@ void Product::setStatus(Status status) {
 	switch (status) {
 	case Product::Status::UNKNOWN:
 	{
-		m_pItem->setText("Unknown");
+		m_pItem->setText(tr("unknown"));
 		break;
 	}
 
 	case Product::Status::AVAILABLE:
 	{
-		m_pItem->setText("Available");
+		m_pItem->setText(tr("available"));
 		break;
 	}
 
 	case Product::Status::UNAVAILABLE:
 	{
-		m_pItem->setText("Unavailable");
+		m_pItem->setText(tr("unavailable"));
 		break;
 	}
 

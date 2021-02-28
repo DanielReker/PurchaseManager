@@ -2,6 +2,54 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>Locality</name>
+    <message>
+        <location filename="Locality.cpp" line="4"/>
+        <source>unknownLocality</source>
+        <translation>Unknown locality</translation>
+    </message>
+</context>
+<context>
+    <name>Product</name>
+    <message>
+        <location filename="Product.cpp" line="4"/>
+        <location filename="Product.cpp" line="39"/>
+        <source>unknown</source>
+        <translation>Unknown</translation>
+    </message>
+    <message>
+        <location filename="Product.cpp" line="45"/>
+        <source>available</source>
+        <translation>Available</translation>
+    </message>
+    <message>
+        <location filename="Product.cpp" line="51"/>
+        <source>unavailable</source>
+        <translation>Unavailable</translation>
+    </message>
+</context>
+<context>
+    <name>ProductType</name>
+    <message>
+        <location filename="ProductType.cpp" line="4"/>
+        <source>unknownProduct</source>
+        <translation>Unknown product</translation>
+    </message>
+</context>
+<context>
+    <name>PurchaseManager</name>
+    <message>
+        <location filename="PurchaseManager.cpp" line="24"/>
+        <source>invalidProductID</source>
+        <translation>Invalid product ID</translation>
+    </message>
+    <message>
+        <location filename="PurchaseManager.cpp" line="33"/>
+        <source>invalidLocalityID</source>
+        <translation>Invalid locality ID</translation>
+    </message>
+</context>
+<context>
     <name>PurchaseManagerClass</name>
     <message>
         <location filename="PurchaseManager.ui" line="14"/>
@@ -87,6 +135,19 @@
         <location filename="PurchaseManager.ui" line="225"/>
         <source>quit</source>
         <translation>Quit</translation>
+    </message>
+</context>
+<context>
+    <name>Shop</name>
+    <message>
+        <location filename="Shop.cpp" line="43"/>
+        <source>localityWithTheSameIDisAlreadyInList</source>
+        <translation>Locality with the same ID is already in list</translation>
+    </message>
+    <message>
+        <location filename="Shop.cpp" line="68"/>
+        <source>productWithTheSameIDisAlreadyInList</source>
+        <translation>Product with the same ID is already in list</translation>
     </message>
 </context>
 </TS>

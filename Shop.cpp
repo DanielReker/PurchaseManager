@@ -40,7 +40,7 @@ void Shop::addLocality(int localityID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
-	} else emit message("Locality with the same ID is already in list", 10000);
+	} else emit message(tr("localityWithTheSameIDisAlreadyInList"), 10000);
 }
 
 void Shop::addProductType(int productID) {
@@ -65,5 +65,5 @@ void Shop::addProductType(int productID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
-	} else emit message("Product with the same ID is already in list", 10000);
+	} else emit message(tr("productWithTheSameIDisAlreadyInList"), 10000);
 }

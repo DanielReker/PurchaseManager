@@ -21,7 +21,7 @@ void PurchaseManager::addProductType() {
     int productID = m_ui.productIDLine->text().toInt(&parsedSuccessfully);
     if (parsedSuccessfully) emit productAdded(productID);
     //TODO: Make status bar delay configurable
-    else onMessage("Invalid product identifier", 10000);
+    else onMessage(tr("invalidProductID"), 10000);
     m_ui.productIDLine->clear();
 }
 
@@ -30,7 +30,7 @@ void PurchaseManager::addLocality() {
     int localityID = m_ui.localityIDLine->text().toInt(&parsedSuccessfully);
     if (parsedSuccessfully) emit localityAdded(localityID);
     //TODO: Make status bar delay configurable
-    else onMessage("Invalid locality identifier", 10000);
+    else onMessage(tr("invalidLocalityID"), 10000);
     m_ui.localityIDLine->clear();
 }
 

@@ -1,7 +1,7 @@
 #include "Locality.h"
 
 Locality::Locality(int localityID, int column)
-	: QObject(), m_localityID{ localityID }, m_column{ column }, m_localityName{ "Unknown locality" }, m_pItem{ new QTableWidgetItem(m_localityName) } {
+	: QObject(), m_localityID{ localityID }, m_column{ column }, m_localityName{ tr("unknownLocality") }, m_pItem{ new QTableWidgetItem(m_localityName) } {
 }
 
 QTableWidgetItem* Locality::getItem() {

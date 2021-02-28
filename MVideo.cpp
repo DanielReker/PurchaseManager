@@ -9,10 +9,7 @@ void MVideo::applyProductInformation(QString htmlPage) {
 	QString localityName;
 	Product::Status status = Product::Status::UNKNOWN;
 
-	/*int localityBegin = htmlPage.indexOf("\'cityName\'") + QString("\'cityName\': \'").length();
-	int localityLength = htmlPage.mid(localityBegin).indexOf("'");
-	localityName = (localityBegin != -1 && localityLength != -1) ? htmlPage.mid(localityBegin, localityLength) : "Unknown locality";*/
-	
+	//TODO: Handling sutiation when product ID is invalid (doesn't exist in shop)
 	int localityBegin = htmlPage.indexOf("<span class=\"header-top-line__link-text\">") + QString("<span class=\"header-top-line__link-text\">").length();
 	int localityLength = htmlPage.mid(localityBegin).indexOf("</span>");
 	localityName = (localityBegin != -1 && localityLength != -1) ? htmlPage.mid(localityBegin, localityLength) : "Unknown locality";

@@ -1,7 +1,7 @@
 #include "ProductType.h"
 
 ProductType::ProductType(int productID, int row)
-	: QObject(), m_productID{ productID }, m_row{ row }, m_productName{ "Unknown product" }, m_pItem{ new QTableWidgetItem(m_productName) } {
+	: QObject(), m_productID{ productID }, m_row{ row }, m_productName{ tr("unknownProduct") }, m_pItem{ new QTableWidgetItem(m_productName) } {
 }
 
 QTableWidgetItem* ProductType::getItem() {
