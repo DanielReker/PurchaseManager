@@ -17,20 +17,12 @@ PurchaseManager::PurchaseManager(QWidget* parent)
 }
 
 void PurchaseManager::addProductType() {
-    bool parsedSuccessfully;
-    int productID = m_ui.productIDLine->text().toInt(&parsedSuccessfully);
-    if (parsedSuccessfully) emit productAdded(productID);
-    //TODO: Make status bar delay configurable
-    else onMessage(tr("invalidProductID"), 10000);
+    emit productAdded(m_ui.productIDLine->text());
     m_ui.productIDLine->clear();
 }
 
 void PurchaseManager::addLocality() {
-    bool parsedSuccessfully;
-    int localityID = m_ui.localityIDLine->text().toInt(&parsedSuccessfully);
-    if (parsedSuccessfully) emit localityAdded(localityID);
-    //TODO: Make status bar delay configurable
-    else onMessage(tr("invalidLocalityID"), 10000);
+    emit localityAdded(m_ui.localityIDLine->text());
     m_ui.localityIDLine->clear();
 }
 
@@ -110,6 +102,6 @@ void PurchaseManager::selectShop(int index) {
     changeProductsTable(index);
     m_selectedShopIndex = index;
 
-    QObject::connect(this, SIGNAL(productAdded(int)), m_shops[m_selectedShopIndex], SLOT(addProductType(int)));
-    QObject::connect(this, SIGNAL(localityAdded(int)), m_shops[m_selectedShopIndex], SLOT(addLocality(int)));
+    QObject::connect(this, SIGNAL(productAdded(QString)), m_shops[m_selectedShopIndex], SLOT(addProductType(QString)));
+    QObject::connect(this, SIGNAL(localityAdded(QString)), m_shops[m_selectedShopIndex], SLOT(addLocality(QString)));
 }

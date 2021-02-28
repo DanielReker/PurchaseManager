@@ -28,7 +28,7 @@ public slots:
 	void beginUpdate();
 
 signals:
-	void requestParsingInformation(int localityID, int productID);
+	void requestParsingInformation(QString localityID, QString productID);
 
 };
 

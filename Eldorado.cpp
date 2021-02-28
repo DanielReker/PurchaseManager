@@ -11,6 +11,6 @@ void Eldorado::applyProductInformation(QString htmlPage) {
 	emit informationReceived("New eldorado product name", "New eldorado locality name", Product::Status::AVAILABLE);
 }
 
-void Eldorado::requestProductInformation(int localityID, int productID) {
-	m_pHtmlParser->parse("https://www.mvideo.ru/products/" + QString::number(productID) + "?cityId=CityCZ_" + QString::number(localityID));
+void Eldorado::requestProductInformation(QString localityID, QString productID) {
+	m_pHtmlParser->parse("https://www.mvideo.ru/products/" + productID + "?cityId=CityCZ_" + localityID);
 }

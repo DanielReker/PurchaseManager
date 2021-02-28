@@ -1,6 +1,6 @@
 #include "ProductType.h"
 
-ProductType::ProductType(int productID, int row)
+ProductType::ProductType(QString productID, int row)
 	: QObject(), m_productID{ productID }, m_row{ row }, m_productName{ tr("unknownProduct") }, m_pItem{ new QTableWidgetItem(m_productName) } {
 }
 
@@ -12,7 +12,7 @@ int ProductType::getRow() const {
 	return m_row;
 }
 
-int ProductType::getID() const {
+QString ProductType::getID() const {
 	return m_productID;
 }
 

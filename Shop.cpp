@@ -8,7 +8,7 @@ Shop::Shop(const QString& name)
 
 	QObject::connect(this, SIGNAL(informationReceived(QString, QString, Product::Status)), m_pProductUpdater, SLOT(onInformationReceived(QString, QString, Product::Status)));
 	QObject::connect(m_pHtmlParser, SIGNAL(parsed(QString)), this, SLOT(applyProductInformation(QString)));
-	QObject::connect(m_pProductUpdater, SIGNAL(requestParsingInformation(int, int)), this, SLOT(requestProductInformation(int, int)));
+	QObject::connect(m_pProductUpdater, SIGNAL(requestParsingInformation(QString, QString)), this, SLOT(requestProductInformation(QString, QString)));
 }
 
 QString Shop::getName() const {
@@ -20,7 +20,7 @@ QTableWidget* Shop::getProductsTable() const {
 }
 
 
-void Shop::addLocality(int localityID) {
+void Shop::addLocality(QString localityID) {
 	bool alreadyInList = false;
 	for (size_t i = 0; i < m_localities.size(); i++) {
 		if (m_localities[i]->getID() == localityID) {
@@ -43,7 +43,7 @@ void Shop::addLocality(int localityID) {
 	} else emit message(tr("localityWithTheSameIDisAlreadyInList"), 10000);
 }
 
-void Shop::addProductType(int productID) {
+void Shop::addProductType(QString productID) {
 	bool alreadyInList = false;
 	for (size_t i = 0; i < m_productTypes.size(); i++) {
 		if (m_productTypes[i]->getID() == productID) {

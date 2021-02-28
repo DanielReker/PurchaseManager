@@ -1,8 +1,9 @@
 #include "Product.h"
 
 Product::Product(Locality* pLocality, ProductType* pProductType)
-	: QObject(), m_pItem{ new QTableWidgetItem(tr("unknown")) }, m_pProductType{ pProductType }, m_pLocality{ pLocality }, m_status{ Status::UNKNOWN } {
+	: QObject(), m_pItem{ new QTableWidgetItem() }, m_pProductType{ pProductType }, m_pLocality{ pLocality }, m_status{ Status::UNKNOWN } {
 
+	setStatus(Product::Status::UNKNOWN);
 }
 
 QTableWidgetItem* Product::getItem() const {
@@ -17,11 +18,11 @@ int Product::getRow() const {
 	return m_pProductType->getRow();
 }
 
-int Product::getLocalityID() const {
+QString Product::getLocalityID() const {
 	return m_pLocality->getID();
 }
 
-int Product::getProductID() const {
+QString Product::getProductID() const {
 	return m_pProductType->getID();
 }
 
@@ -37,18 +38,21 @@ void Product::setStatus(Status status) {
 	case Product::Status::UNKNOWN:
 	{
 		m_pItem->setText(tr("unknown"));
+		m_pItem->setIcon(QIcon(":/status/unknown"));
 		break;
 	}
 
 	case Product::Status::AVAILABLE:
 	{
 		m_pItem->setText(tr("available"));
+		m_pItem->setIcon(QIcon(":/status/available"));
 		break;
 	}
 
 	case Product::Status::UNAVAILABLE:
 	{
 		m_pItem->setText(tr("unavailable"));
+		m_pItem->setIcon(QIcon(":/status/unavailable"));
 		break;
 	}
 

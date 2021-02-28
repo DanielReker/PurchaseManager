@@ -10,20 +10,20 @@ class Locality : public QObject {
 	Q_OBJECT
 
 private:
-	int m_localityID;
+	QString m_localityID;
 	int m_column;
 	QString m_localityName;
 
 	QTableWidgetItem* m_pItem;
 
 public:
-	Locality(int localityID, int column);
+	Locality(QString localityID, int column);
 
 	QTableWidgetItem* getItem();
 
 	int getColumn() const;
 
-	int getID() const;
+	QString getID() const;
 
 public slots:
 	void setLocalityName(const QString& localityName);

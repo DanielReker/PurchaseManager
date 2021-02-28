@@ -56,6 +56,6 @@ public slots:
     void onLanguageChanged(QAction* pAction);
 
 signals:
-    void productAdded(int productID);
-    void localityAdded(int localityID);
+    void productAdded(QString productID);
+    void localityAdded(QString localityID);
 };

@@ -27,6 +27,7 @@ void MVideo::applyProductInformation(QString htmlPage) {
 	emit informationReceived(productName, localityName, status);
 }
 
-void MVideo::requestProductInformation(int localityID, int productID) {
-	m_pHtmlParser->parse("https://www.mvideo.ru/products/" + QString::number(productID) + "?cityId=CityCZ_" + QString::number(localityID));
+void MVideo::requestProductInformation(QString localityID, QString productID) {
+	//TODO: Fix cityId
+	m_pHtmlParser->parse("https://www.mvideo.ru/products/" + productID + "?cityId=" + localityID);
 }

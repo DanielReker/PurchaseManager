@@ -10,7 +10,7 @@ public:
 	Eldorado();
 
 public slots:
-	virtual void requestProductInformation(int localityID, int productID) override;
+	virtual void requestProductInformation(QString localityID, QString productID) override;
 	virtual void applyProductInformation(QString htmlPage) override;
 
 signals:

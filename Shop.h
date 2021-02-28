@@ -42,10 +42,10 @@ public:
 	QTableWidget* getProductsTable() const;
 
 public slots:
-	void addLocality(int localityID);
-	void addProductType(int productID);
+	void addLocality(QString localityID);
+	void addProductType(QString productID);
 
-	virtual void requestProductInformation(int localityID, int productID) = 0;
+	virtual void requestProductInformation(QString localityID, QString productID) = 0;
 	virtual void applyProductInformation(QString htmlPage) = 0;
 
 signals:

@@ -34,8 +34,8 @@ public:
 	int getColumn() const;
 	int getRow() const;
 
-	int getLocalityID() const;
-	int getProductID() const;
+	QString getLocalityID() const;
+	QString getProductID() const;
 
 	friend bool operator== (const Product& p1, const Product& p2);
 	friend bool operator!= (const Product& p1, const Product& p2);

@@ -1,6 +1,6 @@
 #include "Locality.h"
 
-Locality::Locality(int localityID, int column)
+Locality::Locality(QString localityID, int column)
 	: QObject(), m_localityID{ localityID }, m_column{ column }, m_localityName{ tr("unknownLocality") }, m_pItem{ new QTableWidgetItem(m_localityName) } {
 }
 
@@ -12,7 +12,7 @@ int Locality::getColumn() const {
 	return m_column;
 }
 
-int Locality::getID() const {
+QString Locality::getID() const {
 	return m_localityID;
 }
 
