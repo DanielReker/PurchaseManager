@@ -8,6 +8,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QTableWidget>
 #include <QTranslator>
+#include <QActionGroup>
 
 #include <vector>
 
@@ -25,15 +26,17 @@ public:
 
 private:
     Ui::PurchaseManagerClass m_ui;
-    QTranslator* m_pTranslator;
 
     std::vector<Shop*> m_shops;
 
     int m_selectedShopIndex;
 
+    QActionGroup* m_pLangGroup;
+    QTranslator* m_pTranslator;
 
     void setupShops();
     void setupButtons();
+    void setupLanguageMenu();
 
     void changeProductsTable(int index);
 
@@ -49,6 +52,8 @@ public slots:
     void addLocality();
 
     void onMessage(const QString& message, int timeout);
+
+    void onLanguageChanged(QAction* pAction);
 
 signals:
     void productAdded(int productID);

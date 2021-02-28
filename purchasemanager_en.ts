@@ -69,17 +69,22 @@
         <translation>Menu</translation>
     </message>
     <message>
-        <location filename="PurchaseManager.ui" line="209"/>
+        <location filename="PurchaseManager.ui" line="206"/>
+        <source>language</source>
+        <translation>Language</translation>
+    </message>
+    <message>
+        <location filename="PurchaseManager.ui" line="215"/>
         <source>settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="PurchaseManager.ui" line="214"/>
+        <location filename="PurchaseManager.ui" line="220"/>
         <source>about</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="PurchaseManager.ui" line="219"/>
+        <location filename="PurchaseManager.ui" line="225"/>
         <source>quit</source>
         <translation>Quit</translation>
     </message>
