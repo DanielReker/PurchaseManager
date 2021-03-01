@@ -14,7 +14,7 @@ class ProductsUpdater : public QObject {
 private:
 	QTimer* m_pNextUpdateTimer;
 
-	// Deque is used instead of queue because queue unlike deque has not iterators to find products, but it should be used as default queue
+	// Deque is used instead of queue because queue unlike deque have not iterators to find products, but it should be used as default queue
 	std::deque< Product* > m_updateQueue;
 
 public:

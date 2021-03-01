@@ -1,6 +1,6 @@
 #include "Eldorado.h"
 
-//TODO: Remake methods from MVideo's to Eldorado's own, MVideo methods temprorarily put here just in debug purposes
+//TODO: Remake methods from MVideo's to Eldorado's own, MVideo methods were temprorarily put here just in debug purposes
 
 Eldorado::Eldorado() : Shop("Eldorado") {
 

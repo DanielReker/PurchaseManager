@@ -33,7 +33,6 @@ void Product::setLocalityName(const QString& localityName) {
 void Product::setStatus(Status status) {
 	m_status = status;
 	
-	//TODO: Remake with icons
 	switch (status) {
 	case Product::Status::UNKNOWN:
 	{
