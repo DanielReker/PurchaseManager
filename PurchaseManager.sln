@@ -7,19 +7,32 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PurchaseManager", "Purchase
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Debug|Win32.Build.0 = Debug|Win32
 		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Debug|x64.ActiveCfg = Debug|x64
 		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Debug|x64.Build.0 = Debug|x64
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Debug|x86.ActiveCfg = Debug|Win32
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Debug|x86.Build.0 = Debug|Win32
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Release|Win32.ActiveCfg = Release|Win32
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Release|Win32.Build.0 = Release|Win32
 		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Release|x64.ActiveCfg = Release|x64
 		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Release|x64.Build.0 = Release|x64
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Release|x86.ActiveCfg = Release|Win32
+		{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = $(DefaultQtVersion)
 		SolutionGuid = {D27C6CEE-3537-400F-B8D0-38132F464B07}
 	EndGlobalSection
 EndGlobal
