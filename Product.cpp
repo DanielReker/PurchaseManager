@@ -4,6 +4,9 @@ Product::Product(Locality* pLocality, ProductType* pProductType)
 	: QObject(), m_pItem{ new QTableWidgetItem() }, m_pProductType{ pProductType }, m_pLocality{ pLocality }, m_status{ Status::UNKNOWN } {
 
 	setStatus(Product::Status::UNKNOWN);
+
+	// Making item's text not editable
+	m_pItem->setFlags(m_pItem->flags() & ~Qt::ItemFlag::ItemIsEditable);
 }
 
 QTableWidgetItem* Product::getItem() const {

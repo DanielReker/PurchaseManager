@@ -121,18 +121,18 @@
     <None Include="purchasemanager_ru.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="OpenSSL\x86\libcrypto-1_1.dll">
-      <Filter>Resource Files\OpenSSL\x86</Filter>
-    </None>
     <None Include="OpenSSL\x64\libcrypto-1_1-x64.dll">
+      <Filter>Resource Files\OpenSSL\x64</Filter>
+    </None>
+    <None Include="OpenSSL\x64\libssl-1_1-x64.dll">
       <Filter>Resource Files\OpenSSL\x64</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="OpenSSL\x64\libssl-1_1-x64.dll">
-      <Filter>Resource Files\OpenSSL\x64</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="OpenSSL\x86\libssl-1_1.dll">
+      <Filter>Resource Files\OpenSSL\x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="OpenSSL\x86\libcrypto-1_1.dll">
       <Filter>Resource Files\OpenSSL\x86</Filter>
     </CopyFileToFolders>
   </ItemGroup>

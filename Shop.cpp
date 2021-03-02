@@ -9,6 +9,9 @@ Shop::Shop(const QString& name)
 	QObject::connect(this, SIGNAL(informationReceived(QString, QString, Product::Status)), m_pProductUpdater, SLOT(onInformationReceived(QString, QString, Product::Status)));
 	QObject::connect(m_pHtmlParser, SIGNAL(parsed(QString)), this, SLOT(applyProductInformation(QString)));
 	QObject::connect(m_pProductUpdater, SIGNAL(requestParsingInformation(QString, QString)), this, SLOT(requestProductInformation(QString, QString)));
+
+	m_pProductsTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
+	m_pProductsTable->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
 }
 
 QString Shop::getName() const {
