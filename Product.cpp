@@ -57,6 +57,12 @@ void Product::setStatus(Status status) {
 		m_pItem->setIcon(QIcon(":/status/unavailable"));
 		break;
 	}
+	case Product::Status::ERROR:
+	{
+		m_pItem->setText(tr("error"));
+		m_pItem->setIcon(QIcon(":/status/error"));
+		break;
+	}
 
 	default:
 		break;

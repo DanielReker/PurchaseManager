@@ -15,6 +15,7 @@ public:
 		UNKNOWN,
 		AVAILABLE,
 		UNAVAILABLE,
+		ERROR,
 		MAX_STATUSES
 	};
 

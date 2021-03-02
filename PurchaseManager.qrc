@@ -11,5 +11,6 @@
         <file alias="available">img/icons/status/available.svg</file>
         <file alias="unavailable">img/icons/status/unavailable.svg</file>
         <file alias="unknown">img/icons/status/unknown.svg</file>
+        <file alias="error">img/icons/status/error.svg</file>
     </qresource>
 </RCC>
