@@ -33,6 +33,15 @@
       <Extensions>ts</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Resource Files\OpenSSL">
+      <UniqueIdentifier>{45675c24-b7d4-4cdf-9a57-573d8c8f655b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\OpenSSL\x86">
+      <UniqueIdentifier>{5e0a3b8a-9a98-4387-a38a-160339a248d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\OpenSSL\x64">
+      <UniqueIdentifier>{5b8ae94e-ce3e-40c3-a078-b4bea3d9f85f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="PurchaseManager.qrc">
@@ -112,5 +121,19 @@
     <None Include="purchasemanager_ru.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="OpenSSL\x86\libcrypto-1_1.dll">
+      <Filter>Resource Files\OpenSSL\x86</Filter>
+    </None>
+    <None Include="OpenSSL\x64\libcrypto-1_1-x64.dll">
+      <Filter>Resource Files\OpenSSL\x64</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="OpenSSL\x64\libssl-1_1-x64.dll">
+      <Filter>Resource Files\OpenSSL\x64</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="OpenSSL\x86\libssl-1_1.dll">
+      <Filter>Resource Files\OpenSSL\x86</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

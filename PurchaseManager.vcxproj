@@ -203,6 +203,16 @@
     <QtMoc Include="Product.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="OpenSSL\x64\libcrypto-1_1-x64.dll" />
+    <None Include="OpenSSL\x64\libssl-1_1-x64.dll">
+      <FileType>Document</FileType>
+    </None>
+    <CopyFileToFolders Include="OpenSSL\x86\libcrypto-1_1.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="OpenSSL\x86\libssl-1_1.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
     <None Include="purchasemanager_en.ts" />
     <None Include="purchasemanager_ru.ts" />
   </ItemGroup>
