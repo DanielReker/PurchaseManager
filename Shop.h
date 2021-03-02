@@ -46,7 +46,7 @@ public slots:
 	void addProductType(QString productID);
 
 	virtual void requestProductInformation(QString localityID, QString productID) = 0;
-	virtual void applyProductInformation(QString htmlPage) = 0;
+	virtual void applyProductInformation(QString htmlPage, bool errorOccured) = 0;
 
 signals:
 	void informationReceived(const QString& productName, const QString& localityName, Product::Status status);

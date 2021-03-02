@@ -4,25 +4,36 @@ MVideo::MVideo() : Shop("MVideo") {
 
 }
 
-void MVideo::applyProductInformation(QString htmlPage) {
-	QString productName;
-	QString localityName;
+void MVideo::applyProductInformation(QString htmlPage, bool errorOccured) {
+	//TODO: Rewrite parsing product information better
+
+	QString productName = "";
+	QString localityName = "";
 	Product::Status status = Product::Status::UNKNOWN;
+	
+	if (errorOccured) status = Product::Status::ERROR;
+	else {
+		int localityBegin = htmlPage.indexOf("<span class=\"header-top-line__link-text\">");
+		int productBegin = htmlPage.indexOf("\'productName\'");
+		int statusBegin = htmlPage.indexOf("\'productAvailability\'");
+		if (localityBegin == -1 || productBegin == -1 || statusBegin == -1) status = Product::Status::ERROR;
+		else {
+			localityBegin += QString("<span class=\"header-top-line__link-text\">").length();
+			productBegin += QString("\'productName\': \'").length();
+			statusBegin += QString("\'productAvailability\': \'").length();
 
-	//TODO: Handling sutiation when product ID is invalid (doesn't exist in shop)
-	int localityBegin = htmlPage.indexOf("<span class=\"header-top-line__link-text\">") + QString("<span class=\"header-top-line__link-text\">").length();
-	int localityLength = htmlPage.mid(localityBegin).indexOf("</span>");
-	localityName = (localityBegin != -1 && localityLength != -1) ? htmlPage.mid(localityBegin, localityLength) : "Unknown locality";
+			int localityLength = htmlPage.mid(localityBegin).indexOf("</span>");
+			localityName = htmlPage.mid(localityBegin, localityLength);
 
-	int productBegin = htmlPage.indexOf("\'productName\'") + QString("\'productName\': \'").length();
-	int productLength = htmlPage.mid(productBegin).indexOf("'");
-	productName = (productBegin != -1 && productLength != -1) ? htmlPage.mid(productBegin, productLength) : "Unknown product";
+			int productLength = htmlPage.mid(productBegin).indexOf("'");
+			productName = htmlPage.mid(productBegin, productLength);
 
-	int statusBegin = htmlPage.indexOf("\'productAvailability\'") + QString("\'productAvailability\': \'").length();
-	int statusLength = htmlPage.mid(statusBegin).indexOf("'");
-	if (statusBegin == -1 || statusLength == -1) status = Product::Status::UNKNOWN;
-	else if (htmlPage.mid(statusBegin, statusLength) == QString("unavailable")) status = Product::Status::UNAVAILABLE;
-	else if (htmlPage.mid(statusBegin, statusLength) == QString("available")) status = Product::Status::AVAILABLE;
+			int statusLength = htmlPage.mid(statusBegin).indexOf("'");
+			if (htmlPage.mid(statusBegin, statusLength) == QString("unavailable")) status = Product::Status::UNAVAILABLE;
+			else if (htmlPage.mid(statusBegin, statusLength) == QString("available")) status = Product::Status::AVAILABLE;
+			else status = Product::Status::ERROR;
+		}
+	}
 
 	emit informationReceived(productName, localityName, status);
 }

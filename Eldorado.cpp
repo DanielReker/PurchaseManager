@@ -6,7 +6,7 @@ Eldorado::Eldorado() : Shop("Eldorado") {
 
 }
 
-void Eldorado::applyProductInformation(QString htmlPage) {
+void Eldorado::applyProductInformation(QString htmlPage, bool errorOccured) {
 
 	emit informationReceived("New eldorado product name", "New eldorado locality name", Product::Status::AVAILABLE);
 }

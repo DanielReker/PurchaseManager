@@ -30,7 +30,7 @@ QString Product::getProductID() const {
 }
 
 void Product::setLocalityName(const QString& localityName) {
-	m_pLocality->setLocalityName(localityName);
+	if(localityName != QString("")) m_pLocality->setLocalityName(localityName);
 }
 
 void Product::setStatus(Status status) {
@@ -71,7 +71,7 @@ void Product::setStatus(Status status) {
 }
 
 void Product::setProductType(const QString& productType) {
-	m_pProductType->setProductType(productType);
+	if (productType != QString("")) m_pProductType->setProductType(productType);
 }
 
 bool operator==(const Product& p1, const Product& p2) {

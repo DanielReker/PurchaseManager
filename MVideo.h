@@ -13,7 +13,7 @@ public:
 
 public slots:
 	virtual void requestProductInformation(QString localityID, QString productID) override;
-	virtual void applyProductInformation(QString htmlPage) override;
+	virtual void applyProductInformation(QString htmlPage, bool errorOccured) override;
 
 signals:
 

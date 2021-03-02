@@ -7,7 +7,7 @@ Shop::Shop(const QString& name)
 	m_pLocalitiesList{ new QListWidget() }, m_pProductUpdater(new ProductsUpdater()) {
 
 	QObject::connect(this, SIGNAL(informationReceived(QString, QString, Product::Status)), m_pProductUpdater, SLOT(onInformationReceived(QString, QString, Product::Status)));
-	QObject::connect(m_pHtmlParser, SIGNAL(parsed(QString)), this, SLOT(applyProductInformation(QString)));
+	QObject::connect(m_pHtmlParser, SIGNAL(parsed(QString, bool)), this, SLOT(applyProductInformation(QString, bool)));
 	QObject::connect(m_pProductUpdater, SIGNAL(requestParsingInformation(QString, QString)), this, SLOT(requestProductInformation(QString, QString)));
 
 	m_pProductsTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
