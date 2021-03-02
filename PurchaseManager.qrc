@@ -13,4 +13,9 @@
         <file alias="unknown">img/icons/status/unknown.svg</file>
         <file alias="error">img/icons/status/error.svg</file>
     </qresource>
+    <qresource prefix="/menu">
+        <file alias="about">img/icons/menu/about.svg</file>
+        <file alias="quit">img/icons/menu/quit.svg</file>
+        <file alias="settings">img/icons/menu/settings.svg</file>
+    </qresource>
 </RCC>

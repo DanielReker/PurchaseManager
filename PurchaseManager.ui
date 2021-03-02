@@ -189,7 +189,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -211,16 +211,28 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="PurchaseManager.qrc">
+     <normaloff>:/menu/settings</normaloff>:/menu/settings</iconset>
+   </property>
    <property name="text">
     <string>settings</string>
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="PurchaseManager.qrc">
+     <normaloff>:/menu/about</normaloff>:/menu/about</iconset>
+   </property>
    <property name="text">
     <string>about</string>
    </property>
   </action>
   <action name="actionQuit">
+   <property name="icon">
+    <iconset resource="PurchaseManager.qrc">
+     <normaloff>:/menu/quit</normaloff>:/menu/quit</iconset>
+   </property>
    <property name="text">
     <string>quit</string>
    </property>
