@@ -35,7 +35,6 @@ void HtmlParser::parse(const QString& url) {
 void HtmlParser::onParsed() {
 	if (m_timeout.isActive()) {
 		m_timeout.stop();
-
 		if (m_pNetworkReply->error() > 0) emit parsed("", true);
 		else { // Success, no errors
 			QByteArray htmlPageByte = m_pNetworkReply->readAll();

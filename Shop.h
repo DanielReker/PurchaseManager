@@ -10,6 +10,7 @@
 #include <QString>
 #include <QListWidget>
 #include <QTableWidget>
+#include <QTimer>
 
 #include <vector>
 
@@ -19,6 +20,7 @@ class Shop : public QObject {
 
 private:
 	ProductsUpdater* m_pProductUpdater;
+	QTimer m_updateTimer;
 
 	QString m_name;
 
@@ -47,6 +49,8 @@ public slots:
 
 	virtual void requestProductInformation(QString localityID, QString productID) = 0;
 	virtual void applyProductInformation(QString htmlPage, bool errorOccured) = 0;
+
+	void updateAll();
 
 signals:
 	void informationReceived(const QString& productName, const QString& localityName, Product::Status status);
