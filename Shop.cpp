@@ -3,8 +3,8 @@
 #include <QApplication>
 
 Shop::Shop(const QString& name)
-	: QObject(), m_pHtmlParser{ new HtmlParser() }, m_name{ name }, m_pProductsTable{ new QTableWidget() },
-	m_pLocalitiesList{ new QListWidget() }, m_pProductUpdater(new ProductsUpdater()) {
+	: QObject(), m_pHtmlParser{ new HtmlParser(this) }, m_name{ name }, m_pProductsTable{ new QTableWidget() },
+	m_pLocalitiesList{ new QListWidget() }, m_pProductUpdater(new ProductsUpdater()), m_updateTimer{ this } {
 
 	QObject::connect(this, SIGNAL(informationReceived(QString, QString, Product::Status)), m_pProductUpdater, SLOT(onInformationReceived(QString, QString, Product::Status)));
 	QObject::connect(m_pHtmlParser, SIGNAL(parsed(QString, bool)), this, SLOT(applyProductInformation(QString, bool)));
@@ -12,6 +12,11 @@ Shop::Shop(const QString& name)
 
 	m_pProductsTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
 	m_pProductsTable->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
+
+	QObject::connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
+	//TODO: Make update interval configurable
+	m_updateTimer.setInterval(60000);
+	m_updateTimer.start();
 }
 
 QString Shop::getName() const {
@@ -69,4 +74,12 @@ void Shop::addProductType(QString productID) {
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
 	} else emit message(tr("productWithTheSameIDisAlreadyInList"), 10000);
+}
+
+void Shop::updateAll() {
+	for (size_t i = 0; i < m_products.size(); i++) {
+		for (size_t j = 0; j < m_products[i].size(); j++) {
+			m_pProductUpdater->addProduct(m_products[i][j]);
+		}
+	}
 }

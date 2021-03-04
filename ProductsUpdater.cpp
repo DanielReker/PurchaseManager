@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-ProductsUpdater::ProductsUpdater() : m_updateQueue{  }, m_pNextUpdateTimer{ new QTimer() } {
+ProductsUpdater::ProductsUpdater(QObject* parent) : m_updateQueue{  }, m_pNextUpdateTimer{ new QTimer(this) } {
 	//TODO: Make update timer delay configurable
 	m_pNextUpdateTimer->setInterval(1000);
 

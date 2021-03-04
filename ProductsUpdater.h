@@ -18,7 +18,7 @@ private:
 	std::deque< Product* > m_updateQueue;
 
 public:
-	ProductsUpdater();
+	ProductsUpdater(QObject* parent = nullptr);
 
 	void addProduct(Product* pProduct);
 
