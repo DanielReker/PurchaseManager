@@ -14,6 +14,7 @@ class HtmlParser : public QObject {
 private:
 	QNetworkAccessManager* m_pNetworkAccessManager;
 	QNetworkReply* m_pNetworkReply;
+	QNetworkRequest m_networkRequest;
 
 	QUrl m_oldUrl;
 
