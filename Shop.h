@@ -51,6 +51,7 @@ public slots:
 	virtual void applyProductInformation(QString htmlPage, bool errorOccured) = 0;
 
 	void updateAll();
+	void updateSelected();
 
 signals:
 	void informationReceived(const QString& productName, const QString& localityName, Product::Status status);

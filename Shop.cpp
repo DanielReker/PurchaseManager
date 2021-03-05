@@ -13,9 +13,9 @@ Shop::Shop(const QString& name)
 	m_pProductsTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
 	m_pProductsTable->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
 
-	QObject::connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
 	//TODO: Make update interval configurable
-	m_updateTimer.setInterval(60000);
+	QObject::connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
+	m_updateTimer.setInterval(120000);
 	m_updateTimer.start();
 }
 
@@ -82,4 +82,14 @@ void Shop::updateAll() {
 			m_pProductUpdater->addProduct(m_products[i][j]);
 		}
 	}
+}
+
+void Shop::updateSelected() {
+	QList< QTableWidgetItem* > selectedItems = m_pProductsTable->selectedItems();
+	if (selectedItems.size() >= 0) {
+		// Using 0th item only because table cells were made single-selectable so there cannot be 1 or more items
+		m_pProductUpdater->addProduct(m_products[selectedItems[0]->row()][selectedItems[0]->column()]);
+
+	} else message(tr("Item is not selected"), 10000); //TODO: Make status bar delay configurable
+	
 }

@@ -51,6 +51,9 @@ public slots:
     void addProductType();
     void addLocality();
 
+    void updateAll();
+    void updateSelected();
+
     void onMessage(const QString& message, int timeout);
 
     void onLanguageChanged(QAction* pAction);

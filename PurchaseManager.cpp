@@ -26,6 +26,14 @@ void PurchaseManager::addLocality() {
     m_ui.localityIDLine->clear();
 }
 
+void PurchaseManager::updateAll() {
+    m_shops[m_selectedShopIndex]->updateAll();
+}
+
+void PurchaseManager::updateSelected() {
+    m_shops[m_selectedShopIndex]->updateSelected();
+}
+
 void PurchaseManager::changeProductsTable(int index) {
     m_ui.productsTables->setCurrentIndex(index);
 }
@@ -50,6 +58,9 @@ void PurchaseManager::setupButtons() {
 
     QObject::connect(m_ui.addProductButton, SIGNAL(clicked()), this, SLOT(addProductType()));
     QObject::connect(m_ui.addLocalityButton, SIGNAL(clicked()), this, SLOT(addLocality()));
+
+    QObject::connect(m_ui.updateAllButton, SIGNAL(clicked()), this, SLOT(updateAll()));
+    QObject::connect(m_ui.updateSelectedButton, SIGNAL(clicked()), this, SLOT(updateSelected()));
 }
 
 void PurchaseManager::setupLanguageMenu() {
