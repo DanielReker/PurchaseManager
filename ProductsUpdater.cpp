@@ -28,6 +28,11 @@ void ProductsUpdater::localityRemoved(int column) {
 }
 
 void ProductsUpdater::productTypeRemoved(int row) {
+	for (size_t i = 0; i < m_updateQueue.size(); i++) {
+		if (m_updateQueue[i] != nullptr && m_updateQueue[i]->getRow() == row) {
+			m_updateQueue[i] = nullptr;
+		}
+	}
 }
 
 void ProductsUpdater::beginUpdate() {

@@ -12,6 +12,10 @@ int ProductType::getRow() const {
 	return m_row;
 }
 
+void ProductType::setRow(int row) {
+	m_row = row;
+}
+
 QString ProductType::getID() const {
 	return m_productID;
 }

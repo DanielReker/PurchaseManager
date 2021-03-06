@@ -117,5 +117,17 @@ void Shop::removeSelectedLocality() {
 }
 
 void Shop::removeSelectedProduct() {
-
+	Product* selectedProduct = getSelectedProduct();
+	if (selectedProduct != nullptr) {
+		int row = selectedProduct->getRow();
+		m_pProductUpdater->productTypeRemoved(row);
+		m_pProductsTable->removeRow(row);
+		for (size_t i = 0; i < m_products[row].size(); i++) {
+			delete m_products[row][i];
+		}
+		m_products.erase(m_products.begin() + row);
+		delete m_productTypes[row];
+		m_productTypes.erase(m_productTypes.begin() + row);
+		for (size_t i = 0; i < m_productTypes.size(); i++) m_productTypes[i]->setRow(i);
+	} else message(tr("Item is not selected"), 10000);
 }

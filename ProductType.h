@@ -22,6 +22,7 @@ public:
 	QTableWidgetItem* getItem();
 
 	int getRow() const;
+	void setRow(int row);
 
 	QString getID() const;
 
