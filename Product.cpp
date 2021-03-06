@@ -9,6 +9,10 @@ Product::Product(Locality* pLocality, ProductType* pProductType)
 	m_pItem->setFlags(m_pItem->flags() & ~Qt::ItemFlag::ItemIsEditable);
 }
 
+Product::~Product() {
+	
+}
+
 QTableWidgetItem* Product::getItem() const {
 	return m_pItem;
 }

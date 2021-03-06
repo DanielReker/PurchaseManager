@@ -12,6 +12,10 @@ int Locality::getColumn() const {
 	return m_column;
 }
 
+void Locality::setColumn(int column) {
+	m_column = column;
+}
+
 QString Locality::getID() const {
 	return m_localityID;
 }

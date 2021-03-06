@@ -2,6 +2,15 @@
 
 #include <QApplication>
 
+// Returns selected item or nullptr if no items selected
+Product* Shop::getSelectedProduct() {
+	Product* result = nullptr;
+	QList< QTableWidgetItem* > selectedItems = m_pProductsTable->selectedItems();
+	// Using 0th item only because table cells were made single-selectable so there cannot be 1 or more items
+	if (selectedItems.size() > 0) result = m_products[selectedItems[0]->row()][selectedItems[0]->column()];
+	return result;
+}
+
 Shop::Shop(const QString& name)
 	: QObject(), m_pHtmlParser{ new HtmlParser(this) }, m_name{ name }, m_pProductsTable{ new QTableWidget() },
 	m_pLocalitiesList{ new QListWidget() }, m_pProductUpdater(new ProductsUpdater()), m_updateTimer{ this } {
@@ -85,11 +94,28 @@ void Shop::updateAll() {
 }
 
 void Shop::updateSelected() {
-	QList< QTableWidgetItem* > selectedItems = m_pProductsTable->selectedItems();
-	if (selectedItems.size() >= 0) {
-		// Using 0th item only because table cells were made single-selectable so there cannot be 1 or more items
-		m_pProductUpdater->addProduct(m_products[selectedItems[0]->row()][selectedItems[0]->column()]);
+	Product* selectedProduct = getSelectedProduct();
+	if (selectedProduct != nullptr) m_pProductUpdater->addProduct(selectedProduct);
+	else message(tr("Item is not selected"), 10000); //TODO: Make status bar delay configurable
+}
 
+void Shop::removeSelectedLocality() {
+	Product* selectedProduct = getSelectedProduct();
+	if (selectedProduct != nullptr) {
+		int column = selectedProduct->getColumn();
+		m_pProductUpdater->localityRemoved(column);
+		m_pProductsTable->removeColumn(column);
+		for (size_t i = 0; i < m_products.size(); i++) {
+			delete m_products[i][column];
+			m_products[i].erase(m_products[i].begin() + column);
+			
+		}
+		delete m_localities[column];
+		m_localities.erase(m_localities.begin() + column);
+		for (size_t i = 0; i < m_localities.size(); i++) m_localities[i]->setColumn(i);
 	} else message(tr("Item is not selected"), 10000); //TODO: Make status bar delay configurable
-	
+}
+
+void Shop::removeSelectedProduct() {
+
 }

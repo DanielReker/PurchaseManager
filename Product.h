@@ -30,6 +30,8 @@ private:
 public:
 	Product(Locality* pLocality, ProductType* pProductType);
 
+	virtual ~Product();
+
 	QTableWidgetItem* getItem() const;
 
 	int getColumn() const;

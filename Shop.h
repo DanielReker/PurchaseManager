@@ -32,6 +32,8 @@ private:
 
 	std::vector< std::vector<Product*> > m_products; // Contains: [ ProductType ] [ Locality ]   or   [ Row ] [ Column ]
 
+	Product* getSelectedProduct();
+
 
 protected:
 	Shop(const QString& name);
@@ -52,6 +54,9 @@ public slots:
 
 	void updateAll();
 	void updateSelected();
+
+	void removeSelectedLocality();
+	void removeSelectedProduct();
 
 signals:
 	void informationReceived(const QString& productName, const QString& localityName, Product::Status status);

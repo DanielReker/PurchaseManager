@@ -22,6 +22,9 @@ public:
 
 	void addProduct(Product* pProduct);
 
+	void localityRemoved(int column);
+	void productTypeRemoved(int row);
+
 public slots:
 	void onInformationReceived(const QString& productName, const QString& localityName, Product::Status status);
 

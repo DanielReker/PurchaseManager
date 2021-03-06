@@ -34,6 +34,14 @@ void PurchaseManager::updateSelected() {
     m_shops[m_selectedShopIndex]->updateSelected();
 }
 
+void PurchaseManager::removeSelectedLocality() {
+    m_shops[m_selectedShopIndex]->removeSelectedLocality();
+}
+
+void PurchaseManager::removeSelectedProduct() {
+    m_shops[m_selectedShopIndex]->removeSelectedProduct();
+}
+
 void PurchaseManager::changeProductsTable(int index) {
     m_ui.productsTables->setCurrentIndex(index);
 }
@@ -61,6 +69,9 @@ void PurchaseManager::setupButtons() {
 
     QObject::connect(m_ui.updateAllButton, SIGNAL(clicked()), this, SLOT(updateAll()));
     QObject::connect(m_ui.updateSelectedButton, SIGNAL(clicked()), this, SLOT(updateSelected()));
+
+    QObject::connect(m_ui.removeSelectedLocalityButton, SIGNAL(clicked()), this, SLOT(removeSelectedLocality()));
+    QObject::connect(m_ui.removeSelectedProductButton, SIGNAL(clicked()), this, SLOT(removeSelectedProduct()));
 }
 
 void PurchaseManager::setupLanguageMenu() {

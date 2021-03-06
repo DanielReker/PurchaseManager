@@ -22,6 +22,7 @@ public:
 	QTableWidgetItem* getItem();
 
 	int getColumn() const;
+	void setColumn(int column);
 
 	QString getID() const;
 
