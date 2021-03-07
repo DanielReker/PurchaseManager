@@ -85,6 +85,9 @@
     <ClCompile Include="ProductsUpdater.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Shop.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Eldorado.h">
       <Filter>Header Files\Shops</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
