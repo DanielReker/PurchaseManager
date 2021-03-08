@@ -1,6 +1,9 @@
 #include "Shop.h"
 
+#include "Settings.h"
+
 #include <QApplication>
+
 
 // Returns selected item or nullptr if no items selected
 Product* Shop::getSelectedProduct() {
@@ -22,10 +25,8 @@ Shop::Shop(const QString& name)
 	m_pProductsTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
 	m_pProductsTable->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
 
-	//TODO: Make update interval configurable
 	QObject::connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
-	m_updateTimer.setInterval(120000);
-	m_updateTimer.start();
+	m_updateTimer.start(Settings::getValue("autoUpdateIntervalMinutes", Settings::s_defaultAutoUpdateIntervalMinutes).toInt());
 }
 
 QString Shop::getName() const {
@@ -96,7 +97,7 @@ void Shop::updateAll() {
 void Shop::updateSelected() {
 	Product* selectedProduct = getSelectedProduct();
 	if (selectedProduct != nullptr) m_pProductUpdater->addProduct(selectedProduct);
-	else message(tr("Item is not selected"), 10000); //TODO: Make status bar delay configurable
+	else message(tr("itemIsNotSelected"), Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
 void Shop::removeSelectedLocality() {
@@ -113,7 +114,7 @@ void Shop::removeSelectedLocality() {
 		delete m_localities[column];
 		m_localities.erase(m_localities.begin() + column);
 		for (size_t i = 0; i < m_localities.size(); i++) m_localities[i]->setColumn(i);
-	} else message(tr("Item is not selected"), 10000); //TODO: Make status bar delay configurable
+	} else message(tr("itemIsNotSelected"), Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
 void Shop::removeSelectedProduct() {
@@ -129,5 +130,5 @@ void Shop::removeSelectedProduct() {
 		delete m_productTypes[row];
 		m_productTypes.erase(m_productTypes.begin() + row);
 		for (size_t i = 0; i < m_productTypes.size(); i++) m_productTypes[i]->setRow(i);
-	} else message(tr("Item is not selected"), 10000);
+	} else message(tr("itemIsNotSelected"), 10000);
 }

@@ -17,6 +17,8 @@ private:
 	// Deque is used instead of queue because queue unlike deque have not iterators to find products, but it should be used as default queue
 	std::deque< Product* > m_updateQueue;
 
+	void startTimer();
+
 public:
 	ProductsUpdater(QObject* parent = nullptr);
 

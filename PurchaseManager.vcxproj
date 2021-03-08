@@ -178,12 +178,14 @@
     <ClCompile Include="ProductsUpdater.cpp" />
     <ClCompile Include="ProductType.cpp" />
     <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="SettingsDialog.cpp" />
     <ClCompile Include="Shop.cpp" />
     <QtRcc Include="PurchaseManager.qrc" />
     <QtUic Include="PurchaseManager.ui" />
     <QtMoc Include="PurchaseManager.h" />
     <ClCompile Include="PurchaseManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="SettingsDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Shop.h" />
@@ -201,6 +203,7 @@
     <ClInclude Include="Eldorado.h" />
     <ClInclude Include="MVideo.h" />
     <ClInclude Include="Settings.h" />
+    <QtMoc Include="SettingsDialog.h" />
     <QtMoc Include="ProductsUpdater.h" />
     <QtMoc Include="Product.h" />
   </ItemGroup>

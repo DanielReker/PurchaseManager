@@ -5,6 +5,8 @@
 
 #include "HtmlParser.h"
 
+#include "SettingsDialog.h"
+
 #include <QtWidgets/QMainWindow>
 #include <QTableWidget>
 #include <QTranslator>
@@ -27,6 +29,8 @@ public:
 private:
     Ui::PurchaseManagerClass m_ui;
 
+    SettingsDialog m_settingsDialog;
+
     std::vector<Shop*> m_shops;
 
     int m_selectedShopIndex;
@@ -37,6 +41,7 @@ private:
     void setupShops();
     void setupButtons();
     void setupLanguageMenu();
+    void setupSettingsDialog();
 
     void changeProductsTable(int index);
 
@@ -60,6 +65,8 @@ public slots:
     void onMessage(const QString& message, int timeout);
 
     void onLanguageChanged(QAction* pAction);
+
+    void openSettingsDialog();
 
 signals:
     void productAdded(QString productID);

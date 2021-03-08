@@ -1,5 +1,6 @@
 #include "HtmlParser.h"
 
+#include "Settings.h"
 
 
 HtmlParser::HtmlParser(QObject* parent)
@@ -31,8 +32,7 @@ void HtmlParser::parse(const QString& url) {
 	QObject::connect(m_pNetworkReply, SIGNAL(finished()), this, SLOT(onFinished()));
 	m_oldUrl = url;
 
-	//TODO: Make HTML parsing timeout configurable
-	m_timeout.start(10000);
+	m_timeout.start(Settings::getValue("internetRequestTimeoutSec", Settings::s_defaultInternetRequestTimeoutSec).toInt());
 }
 
 void HtmlParser::onParsed() {

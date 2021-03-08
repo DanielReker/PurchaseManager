@@ -1,14 +1,17 @@
 #include "ProductsUpdater.h"
 
+#include "Settings.h"
+
 #include <algorithm>
 
-ProductsUpdater::ProductsUpdater(QObject* parent) : m_updateQueue{  }, m_pNextUpdateTimer{ new QTimer(this) } {
-	//TODO: Make update timer delay configurable
-	m_pNextUpdateTimer->setInterval(1000);
+void ProductsUpdater::startTimer() {
+	m_pNextUpdateTimer->start(Settings::getValue("afterUpdateDelayMsec", Settings::s_defaultAfterUpdateDelayMsec).toInt());
+}
 
+ProductsUpdater::ProductsUpdater(QObject* parent) : m_updateQueue{  }, m_pNextUpdateTimer{ new QTimer(this) } {
 	QObject::connect(m_pNextUpdateTimer, SIGNAL(timeout()), this, SLOT(beginUpdate()));
 	m_pNextUpdateTimer->setSingleShot(true);
-	m_pNextUpdateTimer->start();
+	startTimer();
 }
 
 void ProductsUpdater::addProduct(Product* pProduct) {
@@ -36,11 +39,11 @@ void ProductsUpdater::productTypeRemoved(int row) {
 }
 
 void ProductsUpdater::beginUpdate() {
-	if (m_updateQueue.size() == 0) m_pNextUpdateTimer->start();
+	if (m_updateQueue.size() == 0) startTimer();
 	else if(m_updateQueue.front() != nullptr) emit requestParsingInformation(m_updateQueue.front()->getLocalityID(), m_updateQueue.front()->getProductID());
 	else {
 		m_updateQueue.pop_front();
-		m_pNextUpdateTimer->start();
+		startTimer();
 	}
 }
 
@@ -51,5 +54,5 @@ void ProductsUpdater::onInformationReceived(const QString& productName, const QS
 		m_updateQueue.front()->setStatus(status);
 	}
 	m_updateQueue.pop_front();
-	m_pNextUpdateTimer->start();
+	startTimer();
 }
