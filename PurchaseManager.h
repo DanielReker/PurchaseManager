@@ -29,7 +29,7 @@ public:
 private:
     Ui::PurchaseManagerClass m_ui;
 
-    SettingsDialog m_settingsDialog;
+    SettingsDialog* m_pSettingsDialog;
 
     std::vector<Shop*> m_shops;
 

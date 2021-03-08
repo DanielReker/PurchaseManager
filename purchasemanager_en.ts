@@ -12,22 +12,22 @@
 <context>
     <name>Product</name>
     <message>
-        <location filename="Product.cpp" line="42"/>
+        <location filename="Product.cpp" line="46"/>
         <source>unknown</source>
         <translation>Unknown</translation>
     </message>
     <message>
-        <location filename="Product.cpp" line="49"/>
+        <location filename="Product.cpp" line="53"/>
         <source>available</source>
         <translation>Available</translation>
     </message>
     <message>
-        <location filename="Product.cpp" line="56"/>
+        <location filename="Product.cpp" line="60"/>
         <source>unavailable</source>
         <translation>Unavailable</translation>
     </message>
     <message>
-        <location filename="Product.cpp" line="62"/>
+        <location filename="Product.cpp" line="66"/>
         <source>error</source>
         <translation>Error</translation>
     </message>
@@ -38,17 +38,6 @@
         <location filename="ProductType.cpp" line="4"/>
         <source>unknownProduct</source>
         <translation>Unknown product</translation>
-    </message>
-</context>
-<context>
-    <name>PurchaseManager</name>
-    <message>
-        <source>invalidProductID</source>
-        <translation type="vanished">Invalid product ID</translation>
-    </message>
-    <message>
-        <source>invalidLocalityID</source>
-        <translation type="vanished">Invalid locality ID</translation>
     </message>
 </context>
 <context>
@@ -119,36 +108,77 @@
         <translation>Menu</translation>
     </message>
     <message>
-        <source>language</source>
-        <translation type="vanished">Language</translation>
-    </message>
-    <message>
-        <location filename="PurchaseManager.ui" line="215"/>
+        <location filename="PurchaseManager.ui" line="219"/>
         <source>settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="PurchaseManager.ui" line="220"/>
+        <location filename="PurchaseManager.ui" line="228"/>
         <source>about</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="PurchaseManager.ui" line="225"/>
+        <location filename="PurchaseManager.ui" line="237"/>
         <source>quit</source>
         <translation>Quit</translation>
     </message>
 </context>
 <context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="SettingsDialog.ui" line="14"/>
+        <source>settings</source>
+        <translation>Settings</translation>
+    </message>
+    <message>
+        <location filename="SettingsDialog.ui" line="22"/>
+        <source>internetRequestTimeoutSec</source>
+        <translation>Internet request timeout, sec</translation>
+    </message>
+    <message>
+        <location filename="SettingsDialog.ui" line="46"/>
+        <source>afterUpdateDelayMsec</source>
+        <translation>After-update delay, msec</translation>
+    </message>
+    <message>
+        <location filename="SettingsDialog.ui" line="70"/>
+        <source>autoUpdateIntervalMinutes</source>
+        <translation>Auto update interval, minutes</translation>
+    </message>
+    <message>
+        <location filename="SettingsDialog.ui" line="94"/>
+        <source>statusBarDelaySec</source>
+        <translation>Status bar delay, sec</translation>
+    </message>
+    <message>
+        <location filename="SettingsDialog.ui" line="146"/>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="SettingsDialog.ui" line="153"/>
+        <source>Cancel</source>
+        <translation>Cancel</translation>
+    </message>
+</context>
+<context>
     <name>Shop</name>
     <message>
-        <location filename="Shop.cpp" line="46"/>
+        <location filename="Shop.cpp" line="61"/>
         <source>localityWithTheSameIDisAlreadyInList</source>
         <translation>Locality with the same ID is already in list</translation>
     </message>
     <message>
-        <location filename="Shop.cpp" line="71"/>
+        <location filename="Shop.cpp" line="86"/>
         <source>productWithTheSameIDisAlreadyInList</source>
         <translation>Product with the same ID is already in list</translation>
+    </message>
+    <message>
+        <location filename="Shop.cpp" line="100"/>
+        <location filename="Shop.cpp" line="117"/>
+        <location filename="Shop.cpp" line="133"/>
+        <source>itemIsNotSelected</source>
+        <translation>Item is not selected</translation>
     </message>
 </context>
 </TS>

@@ -42,6 +42,9 @@
     <Filter Include="Resource Files\OpenSSL\x64">
       <UniqueIdentifier>{5b8ae94e-ce3e-40c3-a078-b4bea3d9f85f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Microsoft.VC142.CRT_x86">
+      <UniqueIdentifier>{f996c3d0-ea64-4adc-9100-64de01001986}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="PurchaseManager.qrc">
@@ -127,12 +130,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="purchasemanager_en.ts">
-      <Filter>Translation Files</Filter>
-    </None>
-    <None Include="purchasemanager_ru.ts">
-      <Filter>Translation Files</Filter>
-    </None>
     <None Include="OpenSSL\x64\libcrypto-1_1-x64.dll">
       <Filter>Resource Files\OpenSSL\x64</Filter>
     </None>
@@ -147,10 +144,42 @@
     <CopyFileToFolders Include="OpenSSL\x86\libcrypto-1_1.dll">
       <Filter>Resource Files\OpenSSL\x86</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\concrt140.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_1.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_2.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_atomic_wait.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_codecvt_ids.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\vccorlib140.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\vcruntime140.dll">
+      <Filter>Resource Files\Microsoft.VC142.CRT_x86</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="SettingsDialog.ui">
       <Filter>Resource Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="purchasemanager_en.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
+    <QtTranslation Include="purchasemanager_ru.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
   </ItemGroup>
 </Project>

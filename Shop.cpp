@@ -26,7 +26,7 @@ Shop::Shop(const QString& name)
 	m_pProductsTable->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
 
 	QObject::connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
-	m_updateTimer.start(Settings::getValue("autoUpdateIntervalMinutes", Settings::s_defaultAutoUpdateIntervalMinutes).toInt());
+	m_updateTimer.start(60 * 1000 * Settings::getValue("autoUpdateIntervalMinutes", Settings::s_defaultAutoUpdateIntervalMinutes).toInt());
 }
 
 QString Shop::getName() const {
@@ -58,7 +58,7 @@ void Shop::addLocality(QString localityID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
-	} else emit message(tr("localityWithTheSameIDisAlreadyInList"), 10000);
+	} else emit message(tr("localityWithTheSameIDisAlreadyInList"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
 void Shop::addProductType(QString productID) {
@@ -83,7 +83,7 @@ void Shop::addProductType(QString productID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
-	} else emit message(tr("productWithTheSameIDisAlreadyInList"), 10000);
+	} else emit message(tr("productWithTheSameIDisAlreadyInList"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
 void Shop::updateAll() {
@@ -97,7 +97,7 @@ void Shop::updateAll() {
 void Shop::updateSelected() {
 	Product* selectedProduct = getSelectedProduct();
 	if (selectedProduct != nullptr) m_pProductUpdater->addProduct(selectedProduct);
-	else message(tr("itemIsNotSelected"), Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
+	else message(tr("itemIsNotSelected"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
 void Shop::removeSelectedLocality() {
@@ -114,7 +114,7 @@ void Shop::removeSelectedLocality() {
 		delete m_localities[column];
 		m_localities.erase(m_localities.begin() + column);
 		for (size_t i = 0; i < m_localities.size(); i++) m_localities[i]->setColumn(i);
-	} else message(tr("itemIsNotSelected"), Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
+	} else message(tr("itemIsNotSelected"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
 void Shop::removeSelectedProduct() {
@@ -130,5 +130,5 @@ void Shop::removeSelectedProduct() {
 		delete m_productTypes[row];
 		m_productTypes.erase(m_productTypes.begin() + row);
 		for (size_t i = 0; i < m_productTypes.size(); i++) m_productTypes[i]->setRow(i);
-	} else message(tr("itemIsNotSelected"), 10000);
+	} else message(tr("itemIsNotSelected"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }

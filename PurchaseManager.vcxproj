@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B4ED73E2-73B4-43E5-AAB7-3E6C1B01826C}</ProjectGuid>
-    <Keyword>QtVS_v303</Keyword>
+    <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">10.0.18362.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
@@ -99,9 +99,10 @@
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtInstall>msvc2019</QtInstall>
     <QtModules>core;gui;network;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>$(DefaultQtVersion)</QtInstall>
@@ -109,10 +110,11 @@
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="QtSettings">
-    <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtInstall>msvc2019</QtInstall>
     <QtModules>core;gui;network;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -208,6 +210,30 @@
     <QtMoc Include="Product.h" />
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\concrt140.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_1.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_2.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_atomic_wait.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\msvcp140_codecvt_ids.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\vccorlib140.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Microsoft.VC142.CRT_x86\vcruntime140.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
     <None Include="OpenSSL\x64\libcrypto-1_1-x64.dll" />
     <None Include="OpenSSL\x64\libssl-1_1-x64.dll">
       <FileType>Document</FileType>
@@ -218,8 +244,10 @@
     <CopyFileToFolders Include="OpenSSL\x86\libssl-1_1.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
-    <None Include="purchasemanager_en.ts" />
-    <None Include="purchasemanager_ru.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="purchasemanager_en.ts" />
+    <QtTranslation Include="purchasemanager_ru.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

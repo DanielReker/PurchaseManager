@@ -32,7 +32,7 @@ void HtmlParser::parse(const QString& url) {
 	QObject::connect(m_pNetworkReply, SIGNAL(finished()), this, SLOT(onFinished()));
 	m_oldUrl = url;
 
-	m_timeout.start(Settings::getValue("internetRequestTimeoutSec", Settings::s_defaultInternetRequestTimeoutSec).toInt());
+	m_timeout.start(1000 * Settings::getValue("internetRequestTimeoutSec", Settings::s_defaultInternetRequestTimeoutSec).toInt());
 }
 
 void HtmlParser::onParsed() {

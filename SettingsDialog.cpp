@@ -2,6 +2,8 @@
 
 #include "Settings.h"
 
+#include <QDebug>
+
 SettingsDialog::SettingsDialog(QWidget* pParent) : QDialog(pParent) {
 	m_ui.setupUi(this);
 	setWindowIcon(QIcon(":/menu/settings"));
@@ -13,6 +15,10 @@ SettingsDialog::SettingsDialog(QWidget* pParent) : QDialog(pParent) {
 
 	QObject::connect(this, SIGNAL(accepted()), this, SLOT(saveSettings()));
 	QObject::connect(this, SIGNAL(rejected()), this, SLOT(saveSettings()));
+}
+
+void SettingsDialog::retranslateUI() {
+	m_ui.retranslateUi(this);
 }
 
 void SettingsDialog::saveSettings() {

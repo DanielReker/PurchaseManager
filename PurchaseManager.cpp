@@ -5,7 +5,7 @@
 
 
 PurchaseManager::PurchaseManager(QWidget* parent)
-    : QMainWindow(parent), m_selectedShopIndex{ -1 }, m_pTranslator{ nullptr }, m_pLangGroup{ nullptr }, m_settingsDialog{ this } {
+    : QMainWindow(parent), m_selectedShopIndex{ -1 }, m_pTranslator{ nullptr }, m_pLangGroup{ nullptr }, m_pSettingsDialog{ new SettingsDialog() } {
 
     m_ui.setupUi(this);
     setupShops();
@@ -114,10 +114,11 @@ void PurchaseManager::onLanguageChanged(QAction* pAction) {
     m_pTranslator->load(QString(":/translations/purchasemanager_%1.qm").arg(pAction->data().toString()));
     QApplication::installTranslator(m_pTranslator);
     m_ui.retranslateUi(this);
+    m_pSettingsDialog->retranslateUI();
 }
 
 void PurchaseManager::openSettingsDialog() {
-    m_settingsDialog.exec();
+    m_pSettingsDialog->exec();
 }
 
 void PurchaseManager::selectShop(int index) {

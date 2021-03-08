@@ -13,6 +13,8 @@ private:
 public:
 	SettingsDialog(QWidget* pParent = nullptr);
 
+	void retranslateUI();
+
 public slots:
 	void saveSettings();
 
