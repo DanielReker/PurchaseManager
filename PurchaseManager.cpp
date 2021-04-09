@@ -1,5 +1,7 @@
 #include "PurchaseManager.h"
 
+#include "ShopsState.h"
+
 #include <QDir>
 #include <QIcon>
 
@@ -51,11 +53,16 @@ void PurchaseManager::setupShops() {
     m_shops[static_cast<size_t>(Shops::MVIDEO)] = new MVideo();
     m_shops[static_cast<size_t>(Shops::ELDORADO)] = new Eldorado();
 
+    QStringList shopNames;
+
     for (size_t i = 0; i < m_shops.size(); i++) {
         QObject::connect(m_shops[i], SIGNAL(message(QString, int)), this, SLOT(onMessage(QString, int)));
         m_ui.shopSelectionComboBox->addItem(m_shops[i]->getName());
         m_ui.productsTables->addWidget(m_shops[i]->getProductsTable());
+        shopNames.append(m_shops[i]->getName());
     }
+
+    new ShopsState(shopNames); // Not assigned to any pointer because it's singleton and will be assigned to static pointer in constructor
 
     QObject::connect(m_ui.shopSelectionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(selectShop(int)));
 }
@@ -134,4 +141,6 @@ void PurchaseManager::selectShop(int index) {
 
     QObject::connect(this, SIGNAL(productAdded(QString)), m_shops[m_selectedShopIndex], SLOT(addProductType(QString)));
     QObject::connect(this, SIGNAL(localityAdded(QString)), m_shops[m_selectedShopIndex], SLOT(addLocality(QString)));
+
+    ShopsState::setCurrentShopName(m_shops[index]->getName());
 }

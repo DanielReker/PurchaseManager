@@ -182,6 +182,7 @@
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsDialog.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="ShopsState.cpp" />
     <QtRcc Include="PurchaseManager.qrc" />
     <QtUic Include="PurchaseManager.ui" />
     <QtMoc Include="PurchaseManager.h" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Eldorado.h" />
     <ClInclude Include="MVideo.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="ShopsState.h" />
     <QtMoc Include="SettingsDialog.h" />
     <QtMoc Include="ProductsUpdater.h" />
     <QtMoc Include="Product.h" />

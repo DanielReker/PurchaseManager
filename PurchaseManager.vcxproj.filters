@@ -94,6 +94,9 @@
     <ClCompile Include="SettingsDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ShopsState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Shop.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files\Shops</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopsState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #include "Shop.h"
 
 #include "Settings.h"
+#include "ShopsState.h"
 
 #include <QApplication>
 
@@ -58,6 +59,8 @@ void Shop::addLocality(QString localityID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
+		ShopsState::addLocality(localityID);
+		
 	} else emit message(tr("localityWithTheSameIDisAlreadyInList"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
@@ -83,6 +86,8 @@ void Shop::addProductType(QString productID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
+
+		ShopsState::addProduct(productID);
 	} else emit message(tr("productWithTheSameIDisAlreadyInList"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
 
