@@ -18,6 +18,8 @@ private:
 	static QDomElement getShop(const QString& shopName);
 	static QDomElement getCurrentShop();
 
+	static QStringList getItemsList(const QString& shopName, const QString& tagName, const QString& itemTagName);
+
 public:
 	ShopsState(const QStringList& shopsNames);
 
@@ -35,9 +37,9 @@ public:
 	static void removeProduct(const QString& productID, const QString& shopName);
 	static void removeProduct(const QString& productID);
 
-	static QStringList getAddedLocalities();
-	static QStringList getAddedProducts();
-	static QStringList getAllLocalities();
+	static QStringList getAddedLocalities(const QString& shopName);
+	static QStringList getAddedProducts(const QString& shopName);
+	static QStringList getAllLocalities(const QString& shopName);
 
 public slots:
 

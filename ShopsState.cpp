@@ -69,12 +69,8 @@ ShopsState::ShopsState(const QStringList& shopsNames) : m_instance{ "PurchaseMan
 		s_instance = &m_instance;
 
 		//TODO: Remove debug
-		setCurrentShopName("Shop1");
-
+		setCurrentShopName("0");
 		save();
-
-		//TODO: Remove debug
-		addLocality("TestID", "MVideo");
 	}
 }
 
@@ -96,6 +92,23 @@ QDomElement ShopsState::getShop(const QString& shopName) {
 
 QDomElement ShopsState::getCurrentShop() {
 	return getShop(s_currentShopName);
+}
+
+QStringList ShopsState::getItemsList(const QString& shopName, const QString& tagName, const QString& itemTagName) {
+	QDomElement shop = getShop(shopName);
+	QStringList list;
+	QDomNodeList elementNodes = shop.elementsByTagName(tagName);
+	for (size_t i = 0; i < elementNodes.count(); i++) {
+		QDomElement element = elementNodes.at(i).toElement();
+		if (!element.isNull()) {
+			QDomNodeList itemsList = element.elementsByTagName(itemTagName);
+			for (size_t j = 0; j < itemsList.count(); j++) {
+				if (itemsList.at(j).isElement()) list.append(itemsList.at(j).toElement().text());
+			}
+			break;
+		}
+	}
+	return list;
 }
 
 void ShopsState::save() {
@@ -150,6 +163,7 @@ void ShopsState::addProduct(const QString& productID) {
 }
 
 void ShopsState::removeLocality(const QString& localityID, const QString& shopName) {
+
 }
 
 void ShopsState::removeLocality(const QString& localityID) {
@@ -157,22 +171,23 @@ void ShopsState::removeLocality(const QString& localityID) {
 }
 
 void ShopsState::removeProduct(const QString& productID, const QString& shopName) {
+
 }
 
 void ShopsState::removeProduct(const QString& productID) {
 	removeProduct(productID, s_currentShopName);
 }
 
-QStringList ShopsState::getAddedLocalities() {
-	return QStringList();
+QStringList ShopsState::getAddedLocalities(const QString& shopName) {
+	return getItemsList(shopName, "AddedLocalities", "Locality");
 }
 
-QStringList ShopsState::getAddedProducts() {
-	return QStringList();
+QStringList ShopsState::getAddedProducts(const QString& shopName) {
+	return getItemsList(shopName, "AddedProducts", "Product");
 }
 
-QStringList ShopsState::getAllLocalities() {
-	return QStringList();
+QStringList ShopsState::getAllLocalities(const QString& shopName) {
+	return getItemsList(shopName, "AllLocalities", "Locality");
 }
 
 

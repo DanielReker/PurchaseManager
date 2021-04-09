@@ -64,6 +64,19 @@ void PurchaseManager::setupShops() {
 
     new ShopsState(shopNames); // Not assigned to any pointer because it's singleton and will be assigned to static pointer in constructor
 
+    // Loading added shops and products from ShopsState.xml file
+    for (size_t i = 0; i < m_shops.size(); i++) {
+        QStringList addedLocalities = ShopsState::getAddedLocalities(m_shops.at(i)->getName());
+        for (size_t j = 0; j < addedLocalities.count(); j++) {
+            m_shops.at(i)->addLocality(addedLocalities.at(j));
+        }
+
+        QStringList addedProducts = ShopsState::getAddedProducts(m_shops.at(i)->getName());
+        for (size_t j = 0; j < addedProducts.count(); j++) {
+            m_shops.at(i)->addProductType(addedProducts.at(j));
+        }
+    }
+
     QObject::connect(m_ui.shopSelectionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(selectShop(int)));
 }
 
