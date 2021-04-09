@@ -86,7 +86,7 @@ void Shop::addProductType(QString productID) {
 			m_products[row].push_back(pProduct);
 			m_pProductsTable->setItem(row, column, m_products[row][column]->getItem());
 		}
-
+		
 		ShopsState::addProduct(productID);
 	} else emit message(tr("productWithTheSameIDisAlreadyInList"), 1000 * Settings::getValue("statusBarDelaySec", Settings::s_defaultStatusBarDelaySec).toInt());
 }
@@ -110,6 +110,7 @@ void Shop::removeSelectedLocality() {
 	if (selectedProduct != nullptr) {
 		int column = selectedProduct->getColumn();
 		m_pProductUpdater->localityRemoved(column);
+		ShopsState::removeLocality(m_localities[column]->getID());
 		m_pProductsTable->removeColumn(column);
 		for (size_t i = 0; i < m_products.size(); i++) {
 			delete m_products[i][column];
@@ -127,6 +128,7 @@ void Shop::removeSelectedProduct() {
 	if (selectedProduct != nullptr) {
 		int row = selectedProduct->getRow();
 		m_pProductUpdater->productTypeRemoved(row);
+		ShopsState::removeProduct(m_productTypes[row]->getID());
 		m_pProductsTable->removeRow(row);
 		for (size_t i = 0; i < m_products[row].size(); i++) {
 			delete m_products[row][i];

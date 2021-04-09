@@ -19,6 +19,7 @@ private:
 	static QDomElement getCurrentShop();
 
 	static QStringList getItemsList(const QString& shopName, const QString& tagName, const QString& itemTagName);
+	static void removeItem(const QString& shopName, const QString& tagName, const QString& itemText);
 
 public:
 	ShopsState(const QStringList& shopsNames);

@@ -111,6 +111,22 @@ QStringList ShopsState::getItemsList(const QString& shopName, const QString& tag
 	return list;
 }
 
+void ShopsState::removeItem(const QString& shopName, const QString& tagName, const QString& itemText) {
+	QDomElement shop = getShop(shopName);
+	QDomNodeList elementNodes = shop.elementsByTagName(tagName);
+	for (size_t i = 0; i < elementNodes.count(); i++) {
+		QDomElement element = elementNodes.at(i).toElement();
+		if (!element.isNull()) {
+			QDomNodeList itemsList = element.childNodes();
+			for (size_t j = 0; j < itemsList.count(); j++) {
+				if (itemsList.at(j).isElement() && itemsList.at(j).toElement().text() == itemText) itemsList.at(j).parentNode().removeChild(itemsList.at(j));
+			}
+			break;
+		}
+	}
+	save();
+}
+
 void ShopsState::save() {
 	if (validate()) {
 		QFile file("ShopsState.xml");
@@ -163,7 +179,7 @@ void ShopsState::addProduct(const QString& productID) {
 }
 
 void ShopsState::removeLocality(const QString& localityID, const QString& shopName) {
-
+	removeItem(shopName, "AddedLocalities", localityID);
 }
 
 void ShopsState::removeLocality(const QString& localityID) {
@@ -171,7 +187,7 @@ void ShopsState::removeLocality(const QString& localityID) {
 }
 
 void ShopsState::removeProduct(const QString& productID, const QString& shopName) {
-
+	removeItem(shopName, "AddedProducts", productID);
 }
 
 void ShopsState::removeProduct(const QString& productID) {
