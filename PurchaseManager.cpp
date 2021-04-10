@@ -1,6 +1,7 @@
 #include "PurchaseManager.h"
 
 #include "ShopsState.h"
+#include "Settings.h"
 
 #include <QDir>
 #include <QIcon>
@@ -10,11 +11,15 @@ PurchaseManager::PurchaseManager(QWidget* parent)
     : QMainWindow(parent), m_selectedShopIndex{ -1 }, m_pTranslator{ nullptr }, m_pLangGroup{ nullptr }, m_pSettingsDialog{ new SettingsDialog() } {
 
     m_ui.setupUi(this);
-    setupShops();
-    selectShop(0);
+    
+
     setupButtons();
     setupLanguageMenu();
     setupSettingsDialog();
+
+
+    setupShops();
+    selectShop(0);
 }
 
 void PurchaseManager::addProductType() {
@@ -111,8 +116,7 @@ void PurchaseManager::setupLanguageMenu() {
         m_ui.menuLanguage->addAction(pAction);
         m_pLangGroup->addAction(pAction);
 
-        //TODO: Make startup language configurable
-        if (locale == QString("en")) pAction->trigger();
+        if (locale == Settings::getValue("language", Settings::s_defaultLanguage)) pAction->trigger();
     }
 
 }
@@ -135,6 +139,7 @@ void PurchaseManager::onLanguageChanged(QAction* pAction) {
     QApplication::installTranslator(m_pTranslator);
     m_ui.retranslateUi(this);
     m_pSettingsDialog->retranslateUI();
+    Settings::setValue("language", pAction->data());
 }
 
 void PurchaseManager::openSettingsDialog() {

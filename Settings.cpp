@@ -5,6 +5,8 @@
 
 Settings* Settings::s_instance = nullptr;
 
+const QString Settings::s_defaultLanguage{ "ru" };
+
 Settings::Settings() : m_settings{ new QSettings(QDir::currentPath() + "/config.ini", QSettings::Format::IniFormat) } {
 	if (s_instance == nullptr) s_instance = this;
 }

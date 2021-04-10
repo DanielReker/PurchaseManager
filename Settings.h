@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QSettings>
+#include <QString>
 
 class Settings{
 private:
@@ -20,6 +21,7 @@ public:
 	static const int s_defaultAutoUpdateIntervalMinutes = 5;
 	static const int s_defaultAfterUpdateDelayMsec = 1000;
 	static const int s_defaultInternetRequestTimeoutSec = 10;
+	static const QString s_defaultLanguage;
 
 };
 
