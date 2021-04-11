@@ -1,40 +1,27 @@
 #include "MVideo.h"
 
+#include <QRegularExpression>
+
 MVideo::MVideo() : Shop("MVideo") {
 
 }
 
 void MVideo::applyProductInformation(QString htmlPage, bool errorOccured) {
-	//TODO: Rewrite parsing product information better
-
 	QString productName = "";
 	QString localityName = "";
-	Product::Status status = Product::Status::UNKNOWN;
-	
-	if (errorOccured) status = Product::Status::ERROR;
-	else {
-		int localityBegin = htmlPage.indexOf("<span class=\"header-top-line__link-text\">");
-		int productBegin = htmlPage.indexOf("\'productName\'");
-		int statusBegin = htmlPage.indexOf("\'productAvailability\'");
-		if (localityBegin == -1 || productBegin == -1 || statusBegin == -1) status = Product::Status::ERROR;
-		else {
-			localityBegin += QString("<span class=\"header-top-line__link-text\">").length();
-			productBegin += QString("\'productName\': \'").length();
-			statusBegin += QString("\'productAvailability\': \'").length();
+	Product::Status status = Product::Status::ERROR;
 
-			int localityLength = htmlPage.mid(localityBegin).indexOf("</span>");
-			localityName = htmlPage.mid(localityBegin, localityLength);
+	if (!errorOccured) {
+		QRegularExpressionMatch productNameMatch = QRegularExpression(R"('productName': '(.+?)')").match(htmlPage);
+		if (productNameMatch.hasMatch()) productName = productNameMatch.captured(1);
 
-			int productLength = htmlPage.mid(productBegin).indexOf("'");
-			productName = htmlPage.mid(productBegin, productLength);
+		QRegularExpressionMatch localityNameMatch = QRegularExpression(R"('cityName':[^\w\s]'(.+?)')").match(htmlPage);
+		if (localityNameMatch.hasMatch()) localityName = localityNameMatch.captured(1);
 
-			int statusLength = htmlPage.mid(statusBegin).indexOf("'");
-			if (htmlPage.mid(statusBegin, statusLength) == QString("unavailable")) status = Product::Status::UNAVAILABLE;
-			else if (htmlPage.mid(statusBegin, statusLength) == QString("available")) status = Product::Status::AVAILABLE;
-			else status = Product::Status::ERROR;
-		}
+		QRegularExpressionMatch productAvailabilityMatch = QRegularExpression(R"('productAvailability': '(.+?)')").match(htmlPage);
+		if (productAvailabilityMatch.captured(1) == "available") status = Product::Status::AVAILABLE;
+		else if (productAvailabilityMatch.captured(1) == "unavailable") status = Product::Status::UNAVAILABLE;
 	}
-
 	emit informationReceived(productName, localityName, status);
 }
 

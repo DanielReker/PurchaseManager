@@ -67,10 +67,6 @@ ShopsState::ShopsState(const QStringList& shopsNames) : m_instance{ "PurchaseMan
 			}
 		}
 		s_instance = &m_instance;
-
-		//TODO: Remove debug
-		setCurrentShopName("0");
-		save();
 	}
 }
 
