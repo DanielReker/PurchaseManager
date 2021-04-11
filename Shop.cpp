@@ -4,6 +4,7 @@
 #include "ShopsState.h"
 
 #include <QApplication>
+#include <QHeaderView>
 
 
 // Returns selected item or nullptr if no items selected
@@ -25,6 +26,8 @@ Shop::Shop(const QString& name)
 
 	m_pProductsTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
 	m_pProductsTable->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
+
+	m_pProductsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 	QObject::connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
 	m_updateTimer.start(60 * 1000 * Settings::getValue("autoUpdateIntervalMinutes", Settings::s_defaultAutoUpdateIntervalMinutes).toInt());
