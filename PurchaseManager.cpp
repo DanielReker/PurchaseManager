@@ -150,8 +150,8 @@ void PurchaseManager::selectShop(int index) {
 
     //First selection (on initializing), when m_selectedShopIndex is initialized by -1
     if (m_selectedShopIndex >= 0) {
-        QObject::disconnect(this, SIGNAL(productAdded(int)), m_shops[m_selectedShopIndex], SLOT(addProductType(int)));
-        QObject::disconnect(this, SIGNAL(localityAdded(int)), m_shops[m_selectedShopIndex], SLOT(addLocality(int)));
+        QObject::disconnect(this, SIGNAL(productAdded(QString)), m_shops[m_selectedShopIndex], SLOT(addProductType(QString)));
+        QObject::disconnect(this, SIGNAL(localityAdded(QString)), m_shops[m_selectedShopIndex], SLOT(addLocality(QString)));
     }
 
     changeProductsTable(index);
