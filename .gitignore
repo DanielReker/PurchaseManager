@@ -343,3 +343,5 @@ healthchecksdb
 *.ini
 /.vsBACKUP
 *.xml
+/out
+/CMakeSettings.json
