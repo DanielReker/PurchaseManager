@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.19)
 
 project ("PurchaseManager")
 
@@ -11,52 +11,32 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(CMAKE_PREFIX_PATH ${QT_PATH})
-find_package(Qt5 COMPONENTS Core Gui Network Widgets Xml REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Network Widgets Xml LinguistTools REQUIRED)
 
-add_executable (PurchaseManager WIN32
-	main.cpp
-
-	PurchaseManager.qrc
-
-	PurchaseManager.cpp
-	PurchaseManager.h
-
-	Eldorado.cpp
-	Eldorado.h
-
-	HtmlParser.cpp
-	HtmlParser.h
-
-	Locality.cpp
-	Locality.h
-
-	MVideo.cpp
-	MVideo.h
-
-	Product.cpp
-	Product.h
-
-	ProductsUpdater.cpp
-	ProductsUpdater.h
-
-	ProductType.cpp
-	ProductType.h
-
-	Settings.cpp
-	Settings.h
-
-	SettingsDialog.cpp
-	SettingsDialog.h
-
-	Shop.cpp
-	Shop.h
-
-	ShopsState.cpp
-	ShopsState.h
+file(GLOB_RECURSE SOURCES
+	"src/*.cpp"
+	"src/*.h"
+	"src/*.qrc"
+	"src/*.ui"
 )
+
+if(WIN32)
+	add_executable (PurchaseManager WIN32 ${SOURCES})
+elseif(UNIX)
+	add_executable (PurchaseManager ${SOURCES})
+endif()
 
 target_link_libraries(PurchaseManager Qt5::Core)
 target_link_libraries(PurchaseManager Qt5::Gui)
 target_link_libraries(PurchaseManager Qt5::Network)
 target_link_libraries(PurchaseManager Qt5::Widgets)
 target_link_libraries(PurchaseManager Qt5::Xml)
+
+#file(GLOB_RECURSE TRANSLATIONS "translations/*.ts")
+#qt5_add_translation(QM_FILES purchasemanager_en.ts)
+
+message("qmFiles: " ${QM_FILES})
+
+set(TS_FILES purchasemanager_en.ts purchasemanager_ru.ts)
+set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "l10n")
+qt5_add_translation(QM_FILES ${TS_FILES})

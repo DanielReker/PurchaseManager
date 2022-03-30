@@ -345,3 +345,5 @@ healthchecksdb
 *.xml
 /out
 /CMakeSettings.json
+*.qm
+/src/qmFiles

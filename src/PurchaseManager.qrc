@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/translations">
-        <file>purchasemanager_en.qm</file>
-        <file>purchasemanager_ru.qm</file>
+        <file>qmFiles/purchasemanager_en.qm</file>
+        <file>qmFiles/purchasemanager_ru.qm</file>
     </qresource>
     <qresource prefix="/flags">
         <file alias="ru">img/icons/flags/ru.svg</file>

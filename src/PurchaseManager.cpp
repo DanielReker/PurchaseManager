@@ -103,7 +103,7 @@ void PurchaseManager::setupLanguageMenu() {
     m_pLangGroup->setExclusive(false);
     QObject::connect(m_pLangGroup, SIGNAL(triggered(QAction*)), this, SLOT(onLanguageChanged(QAction*)));
 
-    QStringList fileNames = QDir(":/translations").entryList(QStringList("purchasemanager_*.qm"));
+    QStringList fileNames = QDir(":/translations/qmFiles").entryList(QStringList("purchasemanager_*.qm"));
     for (size_t i = 0; i < fileNames.size(); i++) {
         QString locale = fileNames[i];
         locale.truncate(locale.lastIndexOf('.'));
@@ -135,7 +135,7 @@ void PurchaseManager::onLanguageChanged(QAction* pAction) {
     else QApplication::removeTranslator(m_pTranslator);
 
     //TODO: Handling situation if loading file is not found
-    m_pTranslator->load(QString(":/translations/purchasemanager_%1.qm").arg(pAction->data().toString()));
+    m_pTranslator->load(QString(":/translations/qmFiles/purchasemanager_%1.qm").arg(pAction->data().toString()));
     QApplication::installTranslator(m_pTranslator);
     m_ui.retranslateUi(this);
     m_pSettingsDialog->retranslateUI();
